@@ -4,6 +4,8 @@ const accountContext = createContext();
 
 const AccountWrapper = ({ children }) => {
   const [userName, setUserName] = useState("");
+  const [userID, setUserID] = useState(0);
+  const [photo_url, setPhotoUrl] = useState("");
 
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
@@ -11,10 +13,13 @@ const AccountWrapper = ({ children }) => {
 
       tg.ready();
 
-      const user = tg.initDataUnsafe.user;
+      const user = tg.initDataUnsafe?.user;
+      console.log("ssodda",user);
 
       if (user && user.username) {
         setUserName(user.username);
+        setUserID(user.id); // Access the user's ID correctly
+        setPhotoUrl(user.photo_url);
       } else {
         console.error("Username not available or user not logged in.");
       }
@@ -24,7 +29,7 @@ const AccountWrapper = ({ children }) => {
   }, []);
 
   return (
-    <accountContext.Provider value={{ userName, setUserName }}>
+    <accountContext.Provider value={{ userName, setUserName, userID, setUserID, photo_url, setPhotoUrl }}>
       {children}
     </accountContext.Provider>
   );

@@ -12,7 +12,7 @@ const App = () => {
         <AccountWrapper>
           <Animate>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/quest-vista" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </Animate>
