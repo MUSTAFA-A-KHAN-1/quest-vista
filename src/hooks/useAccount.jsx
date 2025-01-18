@@ -3,9 +3,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const accountContext = createContext();
 
 const AccountWrapper = ({ children }) => {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState("nil");
   const [userID, setUserID] = useState(0);
-  const [photo_url, setPhotoUrl] = useState("");
+  const [photo_url, setPhotoUrl] = useState("nil");
 
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
@@ -20,6 +20,7 @@ const AccountWrapper = ({ children }) => {
         setUserName(user.username);
         setUserID(user.id); // Access the user's ID correctly
         setPhotoUrl(user.photo_url);
+        console.log("SSDDFFGG",photo_url)
       } else {
         console.error("Username not available or user not logged in.");
       }

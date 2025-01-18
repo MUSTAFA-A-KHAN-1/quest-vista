@@ -7,8 +7,8 @@ import { PiBirdFill } from "react-icons/pi";
 import { useAccount } from "../hooks/useAccount";
 
 function Home() {
-  const { userName, userID, photoUrl } = useAccount();
-
+  const { userName, userID, photo_url } = useAccount();
+  
   return (
     <>
       <div className="app-container">
@@ -20,11 +20,15 @@ function Home() {
         <div className="subheader-container">
           <span className="subheader-user">
             <PiBirdFill />@{userName}
-            {userID}
-            {photoUrl}
+              ID: {userID}
           </span>
           <span className="subheader-balance">
             <div className="balance-icon-container">
+            <img
+                src={photo_url}
+                alt={`${userName}'s avatar`}
+                className="balance-icon-container"
+              />
               <FaEthereum color="#fff" />
             </div>
             ShowStats
